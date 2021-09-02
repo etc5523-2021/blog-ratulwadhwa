@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>ETC5523: Communicating with Data</title>
+    <link>git@github.com:etc5523-2021/blog-ratulwadhwa.git</link>
+    <atom:link href="git@github.com:etc5523-2021/blog-ratulwadhwa.git/index.xml" rel="self" type="application/rss+xml"/>
+    <description>My Blogs
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Mon, 30 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Covid Stringency Index in the Philippines</title>
+      <dc:creator>Ratul Wadhwa</dc:creator>
+      <link>git@github.com:etc5523-2021/blog-ratulwadhwa.git/posts/blog1-Philippines</link>
+      <description>In this post we will explore how covid'19 statistics in Philippines. The total number of cases, deaths and recovery and the total vaccinated so far. Apart from that we will also explore the govenments' covid stringency index in the Philippines.</description>
+      <category>Coronavirus</category>
+      <category>Asia</category>
+      <category>Tables</category>
+      <guid>git@github.com:etc5523-2021/blog-ratulwadhwa.git/posts/blog1-Philippines</guid>
+      <pubDate>Mon, 30 Aug 2021 00:00:00 +0000</pubDate>
+      <media:content url="git@github.com:etc5523-2021/blog-ratulwadhwa.git/posts/blog1-Philippines/distill-preview.png" medium="image" type="image/png" width="768" height="403"/>
+    </item>
+    <item>
+      <title>Blog2</title>
+      <dc:creator>Ratul Wadhwa</dc:creator>
+      <link>git@github.com:etc5523-2021/blog-ratulwadhwa.git/posts/Blog2</link>
+      <description>Stay tuned, releasing Fri Sep 17 2021 11.55PM AEST</description>
+      <guid>git@github.com:etc5523-2021/blog-ratulwadhwa.git/posts/Blog2</guid>
+      <pubDate>Mon, 30 Aug 2021 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

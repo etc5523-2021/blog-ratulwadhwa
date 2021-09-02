@@ -1,16 +1,17 @@
 # My Blog
 
 
-This is the blog of [FILL].
-The URL of this blog is [FILL].
+This is the blog of [Ratul Wadhwa].
+The URL of this blog is [https://philippines-covid-trend.netlify.app/].
 
 ## Blog Post 1
 
 This assessment is due Fri Sep 3 2021 11.55PM AEST.
 
-My selected country is [FILL].
+My selected country is [Philippines].
 
-The relevant blog post for this assessment is in [FILL].html
+The relevant blog post for this assessment is in [blog-post].html
+URL- [https://philippines-covid-trend.netlify.app/blog-post.html]
 
 - [ ] Selected a country
 - [ ] Website with R markdown 

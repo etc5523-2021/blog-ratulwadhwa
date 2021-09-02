@@ -1,19 +1,17 @@
 {
   "articles": [
     {
-      "path": "about.html",
-      "title": "About this blog",
-      "description": "Some additional details about the blog",
+      "path": "index.html",
+      "title": "Coronavirus Updates",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-08-30T18:37:16+05:30"
+      "last_modified": "2021-09-03T02:08:43+05:30"
     },
     {
-      "path": "index.html",
-      "title": "My Blog",
+      "path": "README.html",
       "author": [],
-      "contents": "\n\n\n\n",
-      "last_modified": "2021-08-30T18:37:16+05:30"
+      "contents": "\nMy Blog\nThis is the blog of [Ratul Wadhwa]. The URL of this blog is [philippines-covid-trend.netlify.app].\nBlog Post 1\nThis assessment is due Fri Sep 3 2021 11.55PM AEST.\nMy selected country is [Philippines].\nThe relevant blog post for this assessment is in [FILL].html\n\nSelected a country\n\nWebsite with R markdown\n\nA working URL\n\nData description\n\nShort data story\n\nTable 1\n\nTable 2\n\nCustomised website with CSS\n\nSubmitted the entire blog to Moodle\nBlog Post 2\nThis assessment is due Fri Sep 17 2021 11.55PM AEST.\nMy selected country is [FILL].\nThe relevant blog post for this assessment is in [FILL].html\n\nSelected a new country\n\nData Story 1\n\nData Story 2\n\nGraph 1\n\nGraph 2\n\nSubmitted the entire blog to Moodle\n",
+      "last_modified": "2021-09-03T02:08:44+05:30"
     }
   ],
   "collections": ["posts/posts.json"]

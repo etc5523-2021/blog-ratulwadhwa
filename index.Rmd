@@ -1,5 +1,11 @@
 ---
-title: "My Blog"
+title: "Coronavirus Updates"
 site: distill::distill_website
 listing: posts
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 2
+    css: styles.css
 ---
+
