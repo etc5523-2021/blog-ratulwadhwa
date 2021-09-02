@@ -11,10 +11,10 @@ This assessment is due Fri Sep 3 2021 11.55PM AEST.
 My selected country is [Philippines].
 
 The relevant blog post for this assessment is in [blog-post].html
-URL- [https://philippines-covid-trend.netlify.app/blog-post.html]
+URL- [https://philippines-covid-trend.netlify.app/posts/blog1-philippines/]
 
-- [ ] Selected a country
-- [ ] Website with R markdown 
+- [x] Selected a country
+- [x] Website with R markdown 
 - [ ] A working URL
 - [ ] Data description
 - [ ] Short data story
