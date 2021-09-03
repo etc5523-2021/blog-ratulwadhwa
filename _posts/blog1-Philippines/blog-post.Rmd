@@ -1,7 +1,7 @@
 ---
 title: "Covid Stringency Index in the Philippines"
 description: |
-  In this post we will explore how covid'19 statistics in Philippines. The total number of cases, deaths and recovery and the total vaccinated so far. Apart from that we will also explore the govenments' covid stringency index in the Philippines.
+  In this post we will explore the covid'19 statistics in Philippines. The total number of cases, deaths, recovery and the total vaccinated so far. Apart from that we will also explore the govenments' covid stringency index in the Philippines.
 author:
   - name: Ratul Wadhwa
     url: https://github.com/etc5523-2021/blog-ratulwadhwa
@@ -10,10 +10,10 @@ categories:
   - Asia
   - Tables
 date: 08-30-2021
+bibliography: citations.bib
 output:
   distill::distill_article:
     toc: true
-    toc_depth: 2
     css: styles.css
 ---
 
@@ -83,11 +83,13 @@ pivot_wider(names_from = type, values_from = cases)%>%
             Vaccinated = sum(new_vaccinations))
 ```
 
+## Data Description
+
+In this section we will be looking at the covid'19 statistics in Philippines along with its numerical summary statistics (mean, sd, max cases, min cases). In order to achieve this, I chose the data set from [ourworldindia](https://ourworldindata.org/) which contains information regarding the daily reported confirmed cases, total number of deaths, total vaccinated citizens, daily Stringency Index, etc. I filtered Philippines from the data set in order to get its day to day covid'19 statistics (@Philippines). The data set is updated on a regular basis and contains information till September 2021.
+
+The only limitation of this data set is that it does not contain the recovery status of the citizen, hence to calculate that I used the [coronavirus](https://CRAN.R-project.org/package=coronavirus) package of R that provides a tidy format data set of the 2019 Novel @Coronavirus COVID-19 (2019-nCoV) epidemic. The raw data is pulled from the Johns Hopkins University Center for Systems Science and Engineering (JHU CCSE) Coronavirus repository.
+
 ## Numerical Summary Statistics 
-
-In this section we will be looking at the covid'19 statistics in Philippines along with its numerical summary statistics (mean, sd, max cases, min cases). In order to achieve this, I chose the data set from [ourworldindia](https://ourworldindata.org/) which contains information regarding the daily reported confirmed cases, total number of deaths, total vaccinated citizens, daily Stringency Index, etc. I filtered Philippines from the data set in order to get its day to day covid'19 statistics (Hannah Ritchie and Roser 2020). The data set is updated on a regular basis and contains information till September 2021.
-
-The only limitation of this data set is that it does not contain the recovery status of the citizen, hence to calculate that I used the [coronavirus](https://CRAN.R-project.org/package=coronavirus) package of R that provides a tidy format data set of the 2019 Novel Coronavirus COVID-19 (2019-nCoV) epidemic. The raw data is pulled from the Johns Hopkins University Center for Systems Science and Engineering (JHU CCSE) Coronavirus repository.
 
 ### Covid'19 statistics
 
@@ -155,9 +157,9 @@ DT::datatable(Summary, options = list(pageLength = 5), caption = 'Table 2: Summa
 
 The above table 2 shows that the max number of covid cases in Philippines were 365058. The standard deviation of the confirmed cases and vaccinations are higher indicating that the data in these columns are more spread out when compared to the death. It can be seen that the recovery rate is quite good as the mean recovered is quite high in comparison to the mean deaths. Its also satisfying to observe that the maximum vaccinaed number of people is 2849438	which shows that more and more number of people are getting them selves vaccinated. 
 
-## Covid stringency index
+## Covid Stringency Index
 
-As discussed above, the stringency index on any given day is calculated as the mean score of the nine metrics, each taking a value between 0 and 100. A higher score (i.e. 100 or close to 100) indicates a stricter response where as a low score indicates some ease in the policies and restrictions overall
+As discussed above, the stringency index on any given day is calculated as the mean score of the nine metrics, each taking a value between 0 and 100. A higher score (i.e. 100 or close to 100) indicates a stricter response where as a low score indicates some ease in the policies and restrictions overall.
 
 Lets have a close look on table 3 to understand the strictness of government policies with respect to the number of total confirmed cases. 
 
@@ -166,6 +168,7 @@ Lets have a close look on table 3 to understand the strictness of government pol
 covid_data <- read_csv("../../covid-data.csv")
  subset(covid_data, location=='Philippines')%>%
  select(date, total_cases, stringency_index)%>%
+   na.omit()%>%
 group_by(stringency_index)%>%
   summarise(Cases = sum(total_cases),
     sparkline = spk_chr(total_cases, type = "line"))%>%
@@ -181,15 +184,8 @@ group_by(stringency_index)%>%
 
 According to the above analysis, we can see that with an ease in the restriction by the government, there was quite an increase in the number of cases. As the stringency index decreased from 100 to 96 and further to 77.78 in table 3, the number of cases recorded, started to increase from 173347 to 334494 and 363052 respectively. It can be concluded that Governance arrangements play a critical role in countries’ immediate responses to the spread of virus. 
 
-Restrictions on internal movements; cancellation of public events; closures of public transport; stay-at-home requirements; school closures; international travel controls; workplace closures; and public information campaigns are few of the very important measures that Philippines or any other country should not ignore in order to avoid the COVID-19 transmission. 
+Restrictions on internal movements; cancellation of public events; closures of public transport; stay-at-home requirements; school closures; international travel controls; workplace closures; and public information campaigns are few of the very important measures that Philippines or any other country should not ignore in order to avoid the COVID-19 transmission(@Stringency). 
 
 Although these restrictions are curbing the spread of Coronavirus, they cannot last indefinitely, at least not without causing enormous damage to economies and compromising peoples’ good will and emotional well-being. Its important that people take precautions, get vaccinated and avoid going outside as much as they can. 
 
-## References
 
-  Rami Krispin and Jarrett Byrnes (2021). coronavirus: The 2019 Novel Coronavirus COVID-19 (2019-nCoV) Dataset. R package version
-  0.3.22. https://CRAN.R-project.org/package=coronavirus
-  
-  Ritchie, H. (2020, March 5). Philippines: Coronavirus Pandemic Country Profile. Our World in Data. https://ourworldindata.org/coronavirus/country/philippines
-  
-  https://covid19stats.ph/stats
