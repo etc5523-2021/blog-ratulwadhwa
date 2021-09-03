@@ -26,6 +26,7 @@ library(dplyr)
 library(gt)
 library(tidyverse)
 library(DT)
+library(sparkline)
 ```
 
 
@@ -188,4 +189,6 @@ Restrictions on internal movements; cancellation of public events; closures of p
 
 Although these restrictions are curbing the spread of Coronavirus, they cannot last indefinitely, at least not without causing enormous damage to economies and compromising peoples’ good will and emotional well-being. Its important that people take precautions, get vaccinated and avoid going outside as much as they can. 
 
+*Data sets used for the analysis are: @Philippines @Coronavirus*
 
+*R packages used for the analysis are: @dplyr  @gt @tidyverse @sparkline @DT*
