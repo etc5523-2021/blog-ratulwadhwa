@@ -29,7 +29,7 @@ output:
 
 I still remember, it was the evening of 24 March 2020, the Prime Minister of our country India, Narendra Modi ordered a nationwide lock down for 21 days, as a preventive measure, to limit the spread of COVID'19. This lock down was further extended to almost 3 months which impacted the entire 1.38 billion (138 crore) population of India. In this Analysis we shall be discussing the impact of Covid on the Banking sector in India
 
-India has one of the world strongest financial and banking sector. The minor impacts on this sector affects the Indian economy is various ways. Covid'19 and numerous lock downs had a vast impact on the banking sector of National Bombay Stock Exchange. In the below analysis we shall be discussing the closing and trading trends of the leading banks of India which are HDFC Bank, State Bank of India, ICICI Bank, Axis Bank, Kotak Mahindra Bank, and IndusInd Bank. 
+India has one of the world strongest financial and banking sector. The minor impacts on this sector affects the Indian economy is various ways. Covid'19 and numerous lock downs had a vast impact on the banking sector of National Bombay Stock Exchange. In the below analysis we shall be discussing the closing and trading trends of the leading banks of India which are HDFC Bank, State Bank of India, ICICI Bank, Axis Bank, Kotak Mahindra Bank, and IndusInd Bank (@banks). 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -81,7 +81,7 @@ DT::datatable(Variable_Description, caption = 'Table 1: Variable description ') 
 
 ## Analysis
 
-Throughout history, there have been highly improbable events that catch almost everyone by surprise and can potentially have a large impact on the status quo by disrupting human activities and creating havoc. Such kind of events are called black swans. Impact of novel Coronavirus (COVID-19) on the stock market is one such event. The worldwide Stock market has a history of crash and recovery and the Indian Stock Market is no different from that.
+Throughout history, there have been highly improbable events that catch almost everyone by surprise and can potentially have a large impact on the status quo by disrupting human activities and creating havoc. Such kind of events are called black swans. Impact of novel Coronavirus (COVID-19) on the stock market is one such event. The worldwide Stock market has a history of crash and recovery and the Indian Stock Market is no different from that (@impact).
 
 ### Daily Closing Price
 
@@ -136,7 +136,7 @@ library(ggpubr)
 
 An **initial public offering (IPO)** also known as stock launch refers to a public offering in which shares of a company are available to normal investors. The above figure 1.2 `Daily trades done for the shares` showed us the increase in the number of trades during lock down. And to make the payment for these trade/IPO, Its mandatory to have a UPI (Unified Payment Interface) ID. 
 
-More over with the increase in the number of cases in India, People started giving up on the cliche cash mode of payment and adopted the digital mode to reduce the spread of the virus.
+More over with the increase in the number of cases in India, People started giving up on the cliche cash mode of payment and adopted the digital mode to reduce the spread of the virus (@upi).
 
 ## Introduction
 
@@ -250,10 +250,6 @@ Further, from the second story we analyzed the growing UPI Trends during Covid. 
 
 Hence, the impact of COVID-19 on the digital economy has been complex with some positives and some negatives. At the end, the pandemic definitely has uncovered new perspectives and opportunities for the Indian businesses and individuals in the financial sector.
 
-@sparkline, @DT, @tidyverse, @dplyr, @formattable, @readr, @ggplot2, @tidyquant, @ggpubr
+*R packages used for the analysis are: @sparkline, @DT, @tidyverse, @dplyr, @formattable, @readr, @ggplot2, @tidyquant, @ggpubr*
 
-https://www.kaggle.com/anishreddyindupuru/upi-trend-basis-demontization-and-corona
-https://www.embibe.com/exams/top-10-largest-banks-in-india/
-https://www.mckinsey.com/business-functions/strategy-and-corporate-finance/our-insights/the-impact-of-covid-19-on-capital-markets-one-year-in
-https://www.kaggle.com/sumandey/national-stock-exchange-banking-sectors?select=NSE_BANKING_SECTOR.csv
-https://theprint.in/economy/lockdown-sees-more-than-a-million-new-stock-traders-in-india/422873/
+*Data sets used for the analysis are: @data1, @data2*
