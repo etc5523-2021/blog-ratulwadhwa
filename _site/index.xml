@@ -21,12 +21,18 @@
       <media:content url="git@github.com:etc5523-2021/blog-ratulwadhwa.git/posts/blog1-Philippines/distill-preview.png" medium="image" type="image/png" width="768" height="403"/>
     </item>
     <item>
-      <title>Blog2</title>
+      <title>Banking Sector and UPI Trends in India</title>
       <dc:creator>Ratul Wadhwa</dc:creator>
       <link>git@github.com:etc5523-2021/blog-ratulwadhwa.git/posts/Blog2</link>
-      <description>Stay tuned, releasing Fri Sep 17 2021 11.55PM AEST</description>
+      <description>In this post we will explore the Banking Sector and UPI trends in India. The impact of multiple lock downs on the National Bombay Stock Exchange and the adaptation of online payment during and post covid.</description>
+      <category>Coronavirus</category>
+      <category>Asia</category>
+      <category>ggplot</category>
+      <category>Banking Sector</category>
+      <category>UPI</category>
       <guid>git@github.com:etc5523-2021/blog-ratulwadhwa.git/posts/Blog2</guid>
       <pubDate>Mon, 30 Aug 2021 00:00:00 +0000</pubDate>
+      <media:content url="git@github.com:etc5523-2021/blog-ratulwadhwa.git/posts/Blog2/distill-preview.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
   </channel>
 </rss>

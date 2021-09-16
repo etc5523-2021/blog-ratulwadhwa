@@ -1,19 +1,35 @@
 ---
-title: "Blog2"
+title: "Banking Sector and UPI Trends in India"
 description: |
-   Stay tuned, releasing Fri Sep 17 2021 11.55PM AEST
+   In this post we will explore the Banking Sector and UPI trends in India. The impact of multiple lock downs on the National Bombay Stock Exchange and the adaptation of online payment during and post covid.
 author:
   - name: Ratul Wadhwa 
     url:  https://github.com/ratulwadhwa
     affiliation: Monash University
     affiliation_url: https://www.monash.edu/
+categories:
+  - Coronavirus
+  - Asia
+  - ggplot
+  - Banking Sector
+  - UPI
 date: 08-30-2021
+bibliography: citation.bib
 output:
   distill::distill_article:
     toc: true
-    toc_depth: 2
     css: styles.css
 ---
+
+# Impact of Covid on the Banking sector in India
+
+![](https://media.giphy.com/media/S4178TW2Rm1LW/giphy-downsized.gif?cid=ecf05e479o26zl9hi3myqolj86uwakp1aqtwobz3sdwh3rkd&rid=giphy-downsized.gif&ct=g)
+
+## Introduction
+
+I still remember, it was the evening of 24 March 2020, the Prime Minister of our country India, Narendra Modi ordered a nationwide lock down for 21 days, as a preventive measure, to limit the spread of COVID'19. This lock down was further extended to almost 3 months which impacted the entire 1.38 billion (138 crore) population of India. In this Analysis we shall be discussing the impact of Covid on the Banking sector in India
+
+India has one of the world strongest financial and banking sector. The minor impacts on this sector affects the Indian economy is various ways. Covid'19 and numerous lock downs had a vast impact on the banking sector of National Bombay Stock Exchange. In the below analysis we shall be discussing the closing and trading trends of the leading banks of India which are HDFC Bank, State Bank of India, ICICI Bank, Axis Bank, Kotak Mahindra Bank, and IndusInd Bank. 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -23,3 +39,221 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
+## Data Description
+
+The data set used to understand the impact of Covid on the Banking sector in India is taken from [Kaggle](https://www.kaggle.com/sumandey/national-stock-exchange-banking-sectors?select=NSE_BANKING_SECTOR.csv). It was last updated in June'2021. It contains the 5 years of stock data fetched from the National Stock Exchange. It includes several variables like - PREV CLOSE, OPEN, HIGH, LOW, LAST, CLOSE, VWAP, VOLUME, etc. of each day. For the purpose of this analysis, I filtered out the years less than 2019.
+
+```{r message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+NSE_BANKING_SECTOR <- read_csv("Data/NSE_BANKING_SECTOR.csv")
+NSE_BANKING_SECTOR$Year <- format( NSE_BANKING_SECTOR$DATE, format="%Y")
+
+story1 <- NSE_BANKING_SECTOR%>%
+  mutate(Year = as.numeric(Year))%>%
+  filter(NSE_BANKING_SECTOR$Year >= "2019")%>%
+  filter(SYMBOL %in%c( "HDFC" , "SBIN", "ICICIBANK", "AXISBANK", "KOTAKBANK", "INDUSINDBK"))%>%
+  select(DATE, SYMBOL, CLOSE, OPEN, TRADES)%>%
+rename(date = "DATE")
+```
+
+### Variable Discription 
+
+The below table 1 shows the variables and their description for the data set NSE Banking sector.
+
+```{r}
+library(sparkline)
+library(DT)
+library(formattable)
+Variable_Description <- data.frame(Variables = names(story1),
+                          Description = c("Daily datetime of stocks",
+                                          "The particular stock symbol according to NSE.",
+                                          "Day's closing price",
+                                          "Day's opening price",
+                                          "Volume of Trade"))
+
+DT::datatable(Variable_Description, caption = 'Table 1: Variable description ') %>%
+
+ formatStyle("Variables", backgroundColor="#FF9933") %>% formatStyle("Description", backgroundColor="#FFFFFF")
+
+
+```
+
+## Analysis
+
+Throughout history, there have been highly improbable events that catch almost everyone by surprise and can potentially have a large impact on the status quo by disrupting human activities and creating havoc. Such kind of events are called black swans. Impact of novel Coronavirus (COVID-19) on the stock market is one such event. The worldwide Stock market has a history of crash and recovery and the Indian Stock Market is no different from that.
+
+### Daily Closing Price
+
+It can be seen from the below graph that the market crash around March'2021 due to the nationwide lock down had a vast impact on the banking sector of India. February'2020 marks the peak of all the shares before the outbreak of the pandemic. Most of the banks have now recovered and it can be observe that the prices dropped a little during the second wave of Coronavirus in April'2021. Overall the below figure shows the daily closing price of the leading banks of India. Its quite evident that Coronavirus lead to a market crash thus strongly affected the banking sector of India. 
+
+```{r message=FALSE, warning=FALSE}
+library(tidyquant)
+library(dplyr)
+library(ggplot2)
+story1 %>%
+  ggplot(aes(x = date, y = CLOSE, color = SYMBOL)) +
+  geom_line() +
+  labs(x = "Year", y= "Close Price", title = "Figure 1.1: Daily Closing Price of the shares" ) +
+  facet_wrap(~ SYMBOL, ncol = 3, scale = "free_y")+
+  theme_bw() +
+  theme(panel.border = element_blank(),
+        panel.grid.major = element_line(colour = "grey61", size = 0.5, linetype = "dotted"),
+        panel.grid.minor = element_blank(),
+        axis.line=element_line(colour="black"),
+        plot.title = element_text(hjust = 0.5,size=18,colour= "indianred4"))+
+  theme(legend.position="none")
+```
+
+### Daily Trades
+
+There were about 1.2 million people, including me who decide to open a new Dmat accounts during the lock down (around March and April) in India. 
+With risk assets sinking to multi-year lows in March because of the covid pandemic, people/investors across India spotted a buying opportunity and piled into equities. From the below figure we can validate the above statement as its surprising to find that more number of people started to trade and bought the shares of these banks during the lock down. On the day of market crash in March'2020, the rise in the amount of trades done by Indians was highest with a gradual decrease as the price of the share started increasing.
+
+
+```{r message=FALSE, warning=FALSE}
+library(ggpubr)
+ story1$SYMBOL[story1$SYMBOL=="ICICIBANK"]<-"ICICI"
+ story1$SYMBOL[story1$SYMBOL=="AXISBANK"]<- "AXIS"
+ story1$SYMBOL[story1$SYMBOL=="KOTAKBANK"]<-"KOTAK"
+ story1$SYMBOL[story1$SYMBOL=="INDUSINDBK"]<-"INDUSIND"
+ story1 %>%
+  ggplot(aes(x = date, y = TRADES, color = SYMBOL)) +
+  geom_line() +
+  labs(x = "Year", y= "Trades", title = "Figure 1.2: Daily trades done for the shares" ) +
+    facet_grid( SYMBOL~. , scale = "free_y")+
+  theme(legend.position = "none")+
+     theme_bw() +
+  scale_y_continuous(labels = scales::comma)+theme(panel.border = element_blank(),
+        panel.grid.major = element_line(colour = "grey61", size = 0.5, linetype = "dotted"),
+        panel.grid.minor = element_blank(),
+        axis.line=element_line(colour="black"),
+        plot.title = element_text(hjust = 0.5,size=18,colour= "indianred4"))+
+  theme(legend.position="none")
+```
+
+# UPI Trends during Covid
+
+An **initial public offering (IPO)** also known as stock launch refers to a public offering in which shares of a company are available to normal investors. The above figure 1.2 `Daily trades done for the shares` showed us the increase in the number of trades during lock down. And to make the payment for these trade/IPO, Its mandatory to have a UPI (Unified Payment Interface) ID. 
+
+More over with the increase in the number of cases in India, People started giving up on the cliche cash mode of payment and adopted the digital mode to reduce the spread of the virus.
+
+## Introduction
+
+```{r message=FALSE, warning=FALSE}
+UPI_Volumne_prediction <- read_csv("Data/UPI Volumne prediction.csv")
+```
+
+<div class="wrapper">
+<div class="medium-7 columns" >
+```{r, echo = F, out.width = '80%'}
+knitr::include_graphics("images/UPI-Collect.png")
+```
+
+</div>
+<div class="medium-7 columns">
+
+This brings us to our second analysis, i.e **UPI (Unified Payment Interface) Trends during Covid** UPI is an instant payment system, In which the funds gets transferred immediately from one user to another. 
+</div>
+</div>
+
+PhonePe, BHIM App, MobiKwik, Google Tez, Paytm Payments Bank etc. are few of the popular payment apps that allows users to transfer using the UPI interface.
+
+## Data Description
+
+The data set used to understand the UPI Trends during Covid in India is taken from [Kaggle](https://www.kaggle.com/anishreddyindupuru/upi-trend-basis-demontization-and-corona). It was last updated in August'2021. It contains the information from last 5 years. The data set includes several variables like - Month, No. of Banks live on UPI-Count of number of Banks live in UPI, Value (in Cr.) which gives us the total number of banks available on UPI platform and the volume of money transferred via them. For the purpose of this analysis, I filtered out the years less than 2019. The below table 2, provided us the variables and their description.
+
+```{r}
+upi <- UPI_Volumne_prediction %>%
+  head(21)%>%
+  arrange(desc(`No. of Banks live on UPI`))
+
+upi$Month[upi$Month=="Sept-20�"] <- "Sept-20"
+```
+
+### Variable Discription 
+
+```{r}
+library(sparkline)
+library(DT)
+library(formattable)
+Variable_Description <- data.frame(Variables = names(upi),
+                          Description = c("Month of UPI txn",
+                                          "Count of number of Banks live in UPI",
+                                          "Count of number txn done in million",
+                                          "This is the txn amount in INR totaled for the whole month"))
+
+DT::datatable(Variable_Description, caption = 'Table 2: Variable description ') %>%
+
+ formatStyle("Variables", backgroundColor="#FFFFFF") %>% formatStyle("Description", backgroundColor="#00A300")
+
+
+```
+
+## Analysis
+
+<div class="wrapper">
+<div class="medium-7 columns">
+```{r, echo = F}
+
+ggplot(upi, aes(x= reorder(Month, -`No. of Banks live on UPI`, order = F), y= `No. of Banks live on UPI`, fill = `No. of Banks live on UPI`))+
+ scale_fill_gradient(low='pink', high='red')+
+  geom_bar(stat = "identity")+ theme(axis.text.x = element_text(angle = 90)) +theme(legend.position="none")+
+labs(title = "Fig 2.1: Count of total number of banks on UPI platform", x = "Months", y = "No. of Banks available on UPI")+ 
+  theme(panel.border = element_blank(),
+        panel.grid.major = element_line(colour = "grey61", size = 0.5, linetype = "dotted"),
+        panel.grid.minor = element_blank(),
+        axis.line=element_line(colour="black"),
+        plot.title = element_text(hjust = 0.5,size=18,colour= "indianred4"))+
+  theme(legend.position="none")
+```
+
+</div>
+<div class="medium-7 columns">
+
+**Figure 2.1** shows the count of total number of banks on UPI platform. We can observe that the number of banks increased drastically from Nov'19 to Jul'21. More than 100 banks all over India became available on UPI platform as the number increased from 143 banks to 235 by July'21
+</div>
+</div>
+
+
+Concerns over transmission of the virus through the exchange of physical currency boosted online card transactions. Hence, With more number of people using the online mode, more number of banks decided to offer this service to its users.
+
+
+<div class="wrapper">
+<div class="medium-7 columns">
+**Figure 2.2**  shows the value of money transferred via UPI platform. Its obvious that the supply only increases when there is an increase in demand. We can observe from the increased value that more number of people started using online payment in India post Covid.So far almost 60,000 Cr has been transferred via UPI.
+
+</div>
+<div class="medium-7 columns">
+```{r , echo = F}
+ ggplot(upi, aes( x= reorder(Month, `No. of Banks live on UPI`, order = F) , y=`Value (in Cr.)`, fill = `Value (in Cr.)`))+
+scale_fill_gradient(low='purple', high='blue')+
+  geom_bar(stat = "identity")+ theme(axis.text.x = element_text(angle = 90)) +
+  scale_y_continuous(labels = scales::comma, position = "right")+theme(legend.position="none")+
+  labs(title = "Fig 2.2: Value of money transferred via UPI platform", x = "Months", y = "Value (in Cr.)") +
+  theme(panel.border = element_blank(),
+        panel.grid.major = element_line(colour = "grey61", size = 0.5, linetype = "dotted"),
+        panel.grid.minor = element_blank(),
+        axis.line=element_line(colour="black"),
+        plot.title = element_text(hjust = 0.5,size=18,colour= "indianred4"))+
+  theme(legend.position="none")
+```
+</div>
+</div>
+
+
+# Conclusion
+
+This brings us to the end of my blog. To conclude, the impact of novel Coronavirus (COVID-19) on the stock market is referred as a black swans. From the first story we understood the impact covid'19/lock down had on the National Stock Exchange-Banking sector. With the recent market crash which resulted in decrease of prices of all the shares of the banking companies, People decided to buy shares for long term investment.
+
+Further, from the second story we analyzed the growing UPI Trends during Covid. As discussed above, concerns over transmission of the virus through the exchange of physical currency boosted online card transactions. Which resulted in the increase in the value of money transferred. This eventually resulted in drastic increase in the availability of banks on UPI platform from Nov'19 to Jul'21. 
+
+Hence, the impact of COVID-19 on the digital economy has been complex with some positives and some negatives. At the end, the pandemic definitely has uncovered new perspectives and opportunities for the Indian businesses and individuals in the financial sector.
+
+@sparkline, @DT, @tidyverse, @dplyr, @formattable, @readr, @ggplot2, @tidyquant, @ggpubr
+
+https://www.kaggle.com/anishreddyindupuru/upi-trend-basis-demontization-and-corona
+https://www.embibe.com/exams/top-10-largest-banks-in-india/
+https://www.mckinsey.com/business-functions/strategy-and-corporate-finance/our-insights/the-impact-of-covid-19-on-capital-markets-one-year-in
+https://www.kaggle.com/sumandey/national-stock-exchange-banking-sectors?select=NSE_BANKING_SECTOR.csv
+https://theprint.in/economy/lockdown-sees-more-than-a-million-new-stock-traders-in-india/422873/
