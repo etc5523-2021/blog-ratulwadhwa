@@ -15,6 +15,7 @@ categories:
   - UPI
 date: 08-30-2021
 bibliography: citation.bib
+preview: images/Upi-Payment.png
 output:
   distill::distill_article:
     toc: true
@@ -134,7 +135,7 @@ library(ggpubr)
 
 # UPI Trends during Covid
 
-An **initial public offering (IPO)** also known as stock launch refers to a public offering in which shares of a company are available to normal investors. The above figure 1.2 `Daily trades done for the shares` showed us the increase in the number of trades during lock down. And to make the payment for these trade/IPO, Its mandatory to have a UPI (Unified Payment Interface) ID. 
+An **initial public offering (IPO)** also known as stock launch refers to a public offering in which shares of a company are available to normal investors. The above figure 1.2 *Daily trades done for the shares* showed us the increase in the number of trades during lock down. And to make the payment for these trade/IPO, Its mandatory to have a UPI (Unified Payment Interface) ID. 
 
 More over with the increase in the number of cases in India, People started giving up on the cliche cash mode of payment and adopted the digital mode to reduce the spread of the virus (@upi).
 
