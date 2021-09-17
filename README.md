@@ -37,5 +37,5 @@ URL- [https://rwad-etc5523-covid-trend.netlify.app/posts/blog2]
 - [x] Data Story 2
 - [x] Graph 1
 - [x] Graph 2
-- [ ] Submitted the entire blog to Moodle
+- [x] Submitted the entire blog to Moodle
 
